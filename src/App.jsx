@@ -37,13 +37,11 @@ function App() {
   return (
     <>
       <div className="container">
-        <div className="note-header">
-          <NoteHeader
-            notes={notes}
-            sortBy={sortBy}
-            onSort={(e) => setSortBy(e.target.value)}
-          />
-        </div>
+        <NoteHeader
+          notes={notes}
+          sortBy={sortBy}
+          onSort={(e) => setSortBy(e.target.value)}
+        />
         <div className="note-app">
           <AddNewNote onAddNote={handleAddNote} />
           <div className="note-container">
