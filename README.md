@@ -1,4 +1,4 @@
-# Perfume Shop by Elle Famkar (developed with tailwind and alpine js)
+# A Notes App by Elle Famkar (developed with React)
 
 ## Welcome to the Note Apps project! 👋
 
