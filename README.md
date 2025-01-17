@@ -42,7 +42,7 @@ In his project you should be able to:
 
 ### Links
 
-- Live Site URL: [Notes App](https://notes-app-elle.netlify.com/)
+- Live Site URL: [Notes App](https://notes-app-elle.netlify.app/)
 
 ## My process
 
