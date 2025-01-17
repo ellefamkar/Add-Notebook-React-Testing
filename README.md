@@ -42,7 +42,7 @@ In his project you should be able to:
 
 ### Links
 
-- Live Site URL: [Notes App](https://ellefamkar.github.io/perfume-shop/)
+- Live Site URL: [Notes App](https://notes-app-elle.netlify.com/)
 
 ## My process
 
