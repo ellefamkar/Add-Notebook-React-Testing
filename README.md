@@ -40,9 +40,9 @@ In his project you should be able to:
 ![](src/assets/images/Note-app-desktop.png)
 ![](src/assets/images/Note-app-mobile.png)
 
-<!-- ### Links
+### Links
 
-- Live Site URL: [mini perfume shop](https://ellefamkar.github.io/perfume-shop/) -->
+- Live Site URL: [Notes App](https://ellefamkar.github.io/perfume-shop/)
 
 ## My process
 
@@ -67,9 +67,53 @@ This projects helped me being more confident with the details of react component
 To see parts of my codes and see how you can add code snippets, see below:
 
 ```Jsx
-import { useState } from "react";
+import { createContext, useContext, useReducer } from "react";
 
-function AddNewNote({ onAddNote }) {
+const NotesContext = createContext(null);
+const NotesDispatchContext = createContext(null);
+
+const noteReducer = (notes, { type, payload }) => {
+  switch (type) {
+    case "Add":
+      return [...notes, payload];
+    case "Delete":
+      return notes.filter((note) => note.id !== payload);
+    case "Completed": {
+      return notes.map((note) =>
+        note.id === payload ? { ...note, completed: !note.completed } : note
+      );
+    }
+    default:
+      throw new Error("Unknown Error" + type);
+  }
+};
+
+export function NotesProvider({ children }) {
+  const [notes, dispatch] = useReducer(noteReducer, []);
+
+  return (
+    <NotesContext.Provider value={notes}>
+      <NotesDispatchContext.Provider value={dispatch}>
+        {children}
+      </NotesDispatchContext.Provider>
+    </NotesContext.Provider>
+  );
+}
+
+export function useNotes() {
+  return useContext(NotesContext);
+}
+
+export function useNotesDispatch() {
+  return useContext(NotesDispatchContext);
+}
+
+import { useState } from "react";
+import { useNotesDispatch } from "../context/NotesContext";
+
+function AddNewNote() {
+  const dispatch = useNotesDispatch();
+
   let [title, setTitle] = useState("");
   let [description, setDescription] = useState("");
 
@@ -86,7 +130,7 @@ function AddNewNote({ onAddNote }) {
       createdAt: new Date().toISOString(),
     };
 
-    onAddNote(newNote);
+    dispatch({ type: "Add", payload: newNote });
     setTitle("");
     setDescription("");
 
