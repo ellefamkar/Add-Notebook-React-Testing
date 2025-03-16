@@ -2,7 +2,7 @@ import { useNotes } from "../context/NotesContext";
 import Message from "./Message";
 
 function NoteStatus() {
-  const notes = useNotes();
+  const notes = useNotes(); //hook
 
   const allNotes = notes.length;
   const completedNotes = notes.filter((n) => n.completed).length;

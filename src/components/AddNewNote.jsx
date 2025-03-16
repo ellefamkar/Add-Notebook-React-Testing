@@ -23,8 +23,6 @@ function AddNewNote() {
     dispatch({ type: "Add", payload: newNote });
     setTitle("");
     setDescription("");
-
-    console.log(newNote);
   };
 
   return (
