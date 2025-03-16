@@ -66,6 +66,38 @@ This projects helped me being more confident with the details of react component
 
 To see parts of my codes and see how you can add code snippets, see below:
 
+``` Test
+
+
+test("Note App #2: Should add multiple notes ", () => {
+  render(
+    <NotesProvider>
+      <NoteApp sortBy="latest" />
+    </NotesProvider>
+  );
+  addNote([
+    { title: "Note one title", description: "Note one description" },
+    { title: "Note one title", description: "Note one description" },
+    { title: "Note one title", description: "Note one description" },
+    { title: "Note one title", description: "Note one description" },
+  ]);
+  const divElement = screen.getAllByText(/Note one title/i);
+  expect(divElement.length).toBe(4);
+});
+
+test("Note App #3: Should not have active class in initial render ", () => {
+  render(
+    <NotesProvider>
+      <NoteApp sortBy="latest" />
+    </NotesProvider>
+  );
+  addNote([{ title: "Note one title", description: "Note one description" }]);
+  const divElement = screen.getByText(/Note one title/i);
+  expect(divElement).not.toHaveClass("completed");
+});
+
+```
+
 ```Jsx
 import { createContext, useContext, useReducer } from "react";
 
