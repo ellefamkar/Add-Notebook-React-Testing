@@ -39,7 +39,7 @@ test("Note App #2: Should add multiple notes ", () => {
     { title: "Note one title", description: "Note one description" },
     { title: "Note one title", description: "Note one description" },
   ]);
-  const divElement = screen.getAllByText(/Note one title/i);
+  const divElement = screen.getAllByTestId("note-item");
   expect(divElement.length).toBe(4);
 });
 
@@ -50,7 +50,7 @@ test("Note App #3: Should not have active class in initial render ", () => {
     </NotesProvider>
   );
   addNote([{ title: "Note one title", description: "Note one description" }]);
-  const divElement = screen.getByText(/Note one title/i);
+  const divElement = screen.getByTestId("note-item");
   expect(divElement).not.toHaveClass("completed");
 });
 
@@ -64,7 +64,9 @@ test("Note App #4: Should have complete class in when clicked on complete", () =
     addNote([
       {title: "Note one title", description : "Note one description"}
     ]);
-    const divElement = screen.getByText(/Note one title/i); 
-    expect(divElement).not.toHaveClass("completed")
+    const checked = screen.getByRole("checkbox");
+    fireEvent.click(checked);
+    const divElement = screen.getByTestId("note-item");
+    expect(divElement).toHaveClass("completed")
 
   });
