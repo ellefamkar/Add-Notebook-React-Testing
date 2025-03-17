@@ -67,3 +67,34 @@ test("Note App #4: Should have complete class in when clicked on complete", () =
   const divElement = screen.getByTestId("note-item");
   expect(divElement).toHaveClass("completed");
 });
+
+
+
+// Should "delete" when clicked on 
+test("Note App #5: Should have complete class in when clicked on complete", () => {
+  render(<NoteApp sortBy="latest" />);
+  addNote([{ title: "Note one title", description: "Note one description" }]);
+
+  const deleteBtn = screen.getByTestId("delete-note");
+  fireEvent.click(deleteBtn);
+
+  const divElement = screen.queryByTestId("note-item");
+  expect(divElement).toBeNull();
+});
+
+
+
+// All "delete" buttons work
+test("Note App #6: Should have complete class in when clicked on complete", () => {
+  render(<NoteApp sortBy="latest" />);
+  addNote([{ title: "Note one title", description: "Note one description" },
+    { title: "Note one title", description: "Note one description" },
+    { title: "Note one title", description: "Note one description" }
+  ]);
+
+  const deleteBtn = screen.getAllByTestId("delete-note");
+  deleteBtn.forEach((btn) => fireEvent.click(btn));
+
+  const divElement = screen.queryAllByTestId("note-item");
+  expect(divElement).toHaveLength(0);
+});

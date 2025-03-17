@@ -54,7 +54,7 @@ function NoteItem({ note }) {
             <p className="desc">{note.description}</p>
           </div>
           <div className="actions">
-            <button
+            <button data-testid="delete-note"
               onClick={() => dispatch({ type: "Delete", payload: note.id })}
             >
               ❌
