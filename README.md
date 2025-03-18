@@ -1,6 +1,6 @@
 # A Notes App by Elle Famkar (developed with React)
 
-## Welcome to the Note Apps project! 👋
+## Welcome to the Note Apps test project! 👋
 
 important point : remember to install node package and then command -> npm run dev so as to start the project
 
@@ -34,6 +34,7 @@ In his project you should be able to:
 - work with children props
 - View the optimal layout for the component depending on differeent device screen size
 - Use react hooks
+- Writing test for components
 
 ### Screenshot
 
@@ -42,7 +43,7 @@ In his project you should be able to:
 
 ### Links
 
-- Live Site URL: [Notes App](https://notes-app-elle.netlify.app/)
+- Live Site URL: [Notes App](https://test-react-note-app.netlify.app/)
 
 ## My process
 
